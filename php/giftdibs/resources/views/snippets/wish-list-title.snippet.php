@@ -1,0 +1,1 @@
+<h1><?php echo $wishList->get("name"); ?></h1>

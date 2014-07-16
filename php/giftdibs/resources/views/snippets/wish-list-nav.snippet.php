@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+	<li<?php echo ((isset($_GET["filter"]) && $_GET["filter"] == "recent") || !isset($_GET["filter"])) ? " class=\"active\"" : ""; ?>><a href="<?php echo $app->config("page","wish-list", array("wishListId"=>$_GET["wishListId"], "page"=>(isset($_GET["page"])) ? $_GET["page"] : 1, "filter"=>"recent")); ?>"><small class="glyphicon glyphicon-time"></small>&nbsp;&nbsp;Recent</a></li>
+	<li<?php echo (isset($_GET["filter"]) && $_GET["filter"] == "priority") ? " class=\"active\"" : ""; ?>><a href="<?php echo $app->config("page","wish-list", array("wishListId"=>$_GET["wishListId"], "page"=>(isset($_GET["page"])) ? $_GET["page"] : 1, "filter"=>"priority")); ?>"><small class="glyphicon glyphicon-heart"></small>&nbsp;&nbsp;Most wanted</a></li>
+	<li<?php echo (isset($_GET["filter"]) && $_GET["filter"] == "received") ? " class=\"active\"" : ""; ?>><a href="<?php echo $app->config("page","wish-list", array("wishListId"=>$_GET["wishListId"], "page"=>(isset($_GET["page"])) ? $_GET["page"] : 1, "filter"=>"received")); ?>"><small class="glyphicon glyphicon-ok"></small>&nbsp;&nbsp;Received</a></li>
+</ul>
