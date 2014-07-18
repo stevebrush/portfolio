@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+	<title>Grant Attack!</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+
+	<div id="GamePanel">
+		<div id="modal-level-up" class="game-modal" style="display:none;">
+			<h3>Level Up!</h3>
+		</div>
+		<div id="modal-game-start" class="game-modal">
+			<h3><em>Grant Attack!</em></h3>
+			<p>
+				Grants are made up of a number of moving pieces. In order to process a grant, you have to bring all those pieces together - just like in Grant Attack.
+			</p>
+			<p>
+				<img src="images/keyboard-arrows.gif" style="float:left;margin:0 8px 8px 0;">
+				Use the left and right arrow keys to move pieces to the desired position on your desk. The up arrow key rotates pieces. Completing a row finishes a grant and moves it to the "Processed" box. Fill up your "Processed" box to get to the next level.
+			</p>
+			<p>
+				Don't let your grants stack up, or it'll be game over!
+			</p>
+			<button id="btn-game-start" type="button" class="game-button">Play</button>
+		</div>
+		<div id="modal-game-paused" class="game-modal" style="display:none;">
+			<h3>Game Paused</h3>
+			<button id="btn-game-resume" type="button" class="game-button">Resume</button>
+		</div>
+		<div id="modal-game-over" class="game-modal" style="display:none;">
+			<h3>Game Over</h3>
+			<p id="game-over-results"></p>
+			<p>Grant management can be a struggle. Having the right tools - like The Financial Edge<sup>TM</sup> from Blackbaud - simplifies the process so all the pieces of the grant puzzle fall right into place. <a href="https://www.blackbaud.com/fund-accounting/financial-edge" target="_blank">Visit our website</a> to see how The Financial Edge can take your grant game to the next level.</p>
+			<button id="btn-game-again" type="button" class="game-button">Play Again</button>
+		</div>
+		<div id="GameHeader">
+			<div id="GameLevel">Level: --</div>
+			<div id="GameScore">Score: --</div>
+			<button id="btn-game-pause" type="button" class="game-button game-button-pause">||</button>
+		</div>
+		<div id="GameScreen">
+			<canvas id="GameCanvas" height="700px" width="400px"></canvas>
+			<div id="OutBox">
+				<div id="OutBoxTray"><img src="images/out-box.png"></div>
+				<div id="OutBoxPapers"></div>
+			</div>
+		</div>
+	</div>
+	<script src="jquery.js"></script>
+	<script src="game.min.js"></script>
+	
+	
+	
+	
+</body>
+</html>

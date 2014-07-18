@@ -1,0 +1,141 @@
+* {
+	box-sizing: border-box;
+}
+#GamePanel {
+	font-family:'helvetica neue',helvetica, arial, sans-serif;
+	width:565px;
+	position:relative;
+	font-size:13px;
+	line-height:1.35353;
+}
+#GameScreen {
+	border:2px solid #6fc24a;
+	padding:5px;
+	background:#fff;
+	height:714px;
+}
+#GameHeader {
+	background:#6fc24a;
+	color:#fff;
+	padding:10px 20px;
+	overflow:hidden;
+	position:relative;
+	height:40px;
+	font-size:17px;
+}
+#GameLevel {
+	float:right;
+	width:200px;
+	text-align:right;
+}
+#GameScore {
+	float:left;
+	width:50%;
+}
+#GameCanvas {
+	background:url('images/bg-game.jpg') no-repeat;
+	height:700px;
+	width:400px;
+	display:block;
+	margin:0;
+	float:left;
+}
+#OutBox {
+	background:url('images/bg-out-box-meter.png') repeat-y 20px 0;
+	width:145px;
+	height:700px;
+	float:right;
+	position:relative;
+}
+#OutBoxTray {
+	position:absolute;
+	bottom:0;
+	z-index:2;
+}
+#OutBoxTray img {
+	display:block;
+}
+#OutBoxPapers {
+	height:40px;
+	background:url('images/bg-papers.png') repeat-y;
+	position:absolute;
+	width:100%;
+	bottom:0;
+	left:9px;
+	z-index:1;
+}
+
+.game-modal {
+	background:#fff;
+	padding:30px;
+	border:2px solid #6fc24a;
+	border-radius:8px;
+	box-shadow:0 4px 10px rgba(0,0,0,0.3);
+	z-index:999;
+	height:auto;
+	width:80%;
+	max-width:100%;
+	margin:0 auto;
+	position:absolute;
+	top: 90px; left: 0; right: 0;
+	text-align:center;
+}
+.game-modal h3 {
+	font-size:32px;
+	margin:0 0 15px;
+	padding:0;
+}
+.game-modal h4 {
+	font-size:18px;
+	margin:15px 0;
+}
+.game-modal p {
+	margin:0 0 15px;
+	padding:0;
+}
+.game-button {
+	background:#6fc24a;
+	color:#fff;
+	font-size:18px;
+	text-transform:uppercase;
+	padding:15px 0;
+	border-radius:5px;
+	display:block;
+	border:0;
+	width:100%;
+	cursor:pointer;
+}
+.game-button-pause {
+	display:inline-block;
+	position:absolute;
+	top:0;
+	margin:7px auto 0;
+	border:1px solid #fff;
+	padding:4px 8px;
+	right:0;
+	left:0;
+	width:30px;
+	font-weight:bold;
+	font-size:15px;
+	display:none;
+}
+.game-assessment {
+	margin:8px 0 0;
+	background:#f2f2f1;
+	border-radius:4px;
+	font-size:18px;
+	padding:10px;
+	text-align:left;
+}
+#modal-level-up {
+	width:150px;
+	left:auto;
+	right:15px;
+	top:55px;
+	margin:0;
+	padding:20px;
+}
+#modal-level-up h3 {
+	margin:0;
+	font-size:18px;
+}
