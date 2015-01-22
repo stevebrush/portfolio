@@ -1,0 +1,1 @@
+These files are not actively used by the plugin; they are purely for reference to help you setup your theme in the correct way.

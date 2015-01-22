@@ -1,0 +1,7 @@
+textarea.accepts-code {
+	height: 212px;
+	font-family: "Consolas", "Monaco", "Menlo", "Courier New";
+	background: #f7f7f7;
+	color: #555;
+	font-size: 13px;
+}
