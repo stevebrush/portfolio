@@ -55,9 +55,9 @@ class TFP_Application {
 
 		$showTopTen = false;
 
-		if (isset ($this->aTopTen ["top10summary"]) && isset ($this->aTopTen ["top10summary"] [0])) {
+		if (isset ($this->aTopTen ["top10summary"]) && isset ($this->aTopTen ["top10summary"][0])) {
 
-			$date  		 = strtotime ($this->aTopTen ["top10summary"] [0] ["top10DateCreated"]);
+			$date  		 = strtotime ($this->aTopTen ["top10summary"][0]["top10DateCreated"]);
 			$now_year 	 = date ("Y");
 			$now_day     = date ("j");
 			$topten_year = date ("Y", $date);
@@ -87,7 +87,7 @@ class TFP_Application {
 		foreach ($arr as $k => $v) {
 			$temp [$k] = $v;
 		}
-		$src = $this->config("url", "js") . "front-pages.js";
+		$src = $this->config("url", "js") . "bbi-newseum.js?v=" . time();
 		echo "<script>var TFP_DATA = " . json_encode ($temp) . ";</script>";
 		echo '<!-- BBI NAMESPACE -->
 		<script>
@@ -134,12 +134,16 @@ class TFP_Application {
 
 	private function filterByPaperId ($data = array (), $fpId = 0) {
 
+		global $wp_query;
+
 		$temp = array ();
 		$counter = 0;
+		$args = array ();
 
-		$topTenArgs = "";
-		if (isset ($data ["summary"])) {
-			$topTenArgs = "&tfp_display=topten";
+		foreach ($wp_query->query_vars as $k => $v) {
+			if (strpos($k, "tfp_") === 0) {
+				$args[$k] = $v;
+			}
 		}
 
 		foreach ($data ["papers"] as $paper) {
@@ -149,13 +153,15 @@ class TFP_Application {
 				$temp = $paper;
 
 				# Find the previous paper's URL
-				if (isset ($data ["papers"] [$counter - 1])) {
-					$temp ["links"] ["prev"] = $data ["papers"] [$counter - 1] ["links"] ["detail"] . $topTenArgs;
+				if (isset ($data ["papers"][$counter - 1])) {
+					$args["tfp_id"] = $data ["papers"][$counter - 1]["paperId"];
+					$temp ["links"]["prev"] = add_query_arg ($args, get_permalink ());
 				}
 
 				# Find the next paper's URL
-				if (isset ($data ["papers"] [$counter + 1])) {
-					$temp ["links"] ["next"] = $data ["papers"] [$counter + 1] ["links"] ["detail"] . $topTenArgs;
+				if (isset ($data ["papers"][$counter + 1])) {
+					$args["tfp_id"] = $data ["papers"][$counter + 1]["paperId"];
+					$temp ["links"]["next"] = add_query_arg ($args, get_permalink ());
 				}
 
 				break;
@@ -276,7 +282,7 @@ class TFP_Application {
 			);
 
 			$paper ["links"] = array (
-				"back" => add_query_arg (array ("tfp_display" => "archive-summary"), get_permalink ()),
+				"back" => add_query_arg (array ("tfp_display" => "archive-summary"), get_permalink ()) . "#" . $paper ["paperId"],
 				"pdf" => $this->pdfSrcArchive ($paper ["paperId"], $archiveId),
 				"detail" => add_query_arg (array ("tfp_id" => $paper ["paperId"]), get_permalink ())
 			);
@@ -323,7 +329,7 @@ class TFP_Application {
 		return $data;
 	}
 
-	private function getPapers () {
+	private function getPapers ($display = "gallery") {
 
 		global $wp_query;
 
@@ -348,9 +354,9 @@ class TFP_Application {
 				);
 
 				$paper ["links"] = array (
-					"back" => get_permalink (),
+					"back" => add_query_arg (array ("tfp_display" => $display), get_permalink ()) . "#" . $paper ["paperId"],
 					"pdf" => $this->pdfSrc ($id),
-					"detail" => add_query_arg (array ("tfp_id" => $id), get_permalink ())
+					"detail" => add_query_arg (array ("tfp_id" => $id), get_permalink ()),
 				);
 
 				$temp [] = $paper;
@@ -388,7 +394,7 @@ class TFP_Application {
 
 			# Create region dropdown.
 			if ($paper ["region"] !== "" && in_array ($paper ["region"], $sort ["region"], true) === false) {
-				$sort ["region"] [] = $paper ["region"];
+				$sort ["region"][] = $paper ["region"];
 			}
 
 			# Create state letter dropdown.
@@ -400,7 +406,7 @@ class TFP_Application {
 					$queryArray ["tfp_archive_id"] = $archiveId;
 				}
 
-				$sort ["stateFirstLetter"] [$stateLetter] = add_query_arg ($queryArray, $this->currentUrl);
+				$sort ["stateFirstLetter"][$stateLetter] = add_query_arg ($queryArray, $this->currentUrl);
 			}
 
 			# Create country letter dropdown.
@@ -412,7 +418,7 @@ class TFP_Application {
 					$queryArray ["tfp_archive_id"] = $archiveId;
 				}
 
-				$sort ["countryFirstLetter"] [$countryLetter] = add_query_arg ($queryArray, $this->currentUrl);
+				$sort ["countryFirstLetter"][$countryLetter] = add_query_arg ($queryArray, $this->currentUrl);
 			}
 
 			# Create paper title letter dropdown.
@@ -424,7 +430,7 @@ class TFP_Application {
 					$queryArray ["tfp_archive_id"] = $archiveId;
 				}
 
-				$sort ["titleFirstLetter"] [$titleLetter] = add_query_arg ($queryArray, $this->currentUrl);
+				$sort ["titleFirstLetter"][$titleLetter] = add_query_arg ($queryArray, $this->currentUrl);
 			}
 
 		}
@@ -533,7 +539,7 @@ class TFP_Application {
 		echo $this->view("admin", $data);
 	}
 
-	private function prep ($papers) {
+	private function prep ($papers, $display = "gallery") {
 
 		$temp = array();
 
@@ -547,7 +553,7 @@ class TFP_Application {
 				"lg" => $this->thumbnailSrc("lg", $paper["paperId"])
 			);
 			$paper["links"] = array(
-				"back" => get_permalink(),
+				"back" => add_query_arg (array ("tfp_display" => $display), get_permalink ()) . "#" . $paper ["paperId"],
 				"pdf" => $this->pdfSrc($paper["paperId"]),
 				"detail" => add_query_arg(array("tfp_id" => $paper["paperId"]), get_permalink())
 			);
@@ -600,12 +606,12 @@ class TFP_Application {
 
 			default:
 			case "gallery":
-				$data = $this->getPapers ();
+				$data = $this->getPapers ($display);
 				break;
 
 			case "topten":
-				$data = $this->prep ($this->aTopTen);
-				$data ["summary"] = $this->aTopTen ["top10summary"] [0];
+				$data = $this->prep ($this->aTopTen, $display);
+				$data ["summary"] = $this->aTopTen ["top10summary"][0];
 				$data ["date"] = date ($this->dateFormat, strtotime ($this->aDailyStatus ["updatedDate"]));
 				break;
 
@@ -621,6 +627,10 @@ class TFP_Application {
 		# Show the Top Ten link?
 		$data = $this->checkTopTen ($data);
 
+		# Filter and sort the papers.
+		$data ["papers"] = $this->filterPapers ($data ["papers"]);
+		$data ["papers"] = $this->sortPapers ($data ["papers"]);
+
 		# Is the current page a detail page?
 		if (isset ($wp_query->query_vars ["tfp_id"])) {
 
@@ -631,16 +641,15 @@ class TFP_Application {
 
 			$data ["options"] = array ("display" => "detail-" . $display);
 
+			# Print JavaScript objects.
+			$this->exposeData ($data);
+
 			return $this->view ("paper", $data);
 
 		}
 
 		# Not a detail page.
 		else {
-
-			# Filter and sort the papers.
-			$data ["papers"] = $this->filterPapers ($data ["papers"]);
-			$data ["papers"] = $this->sortPapers ($data ["papers"]);
 
 			# How many papers should appear, per page?
 			$show = (isset ($wp_query->query_vars ["tfp_show"])) ? $wp_query->query_vars ["tfp_show"] : "40";
@@ -655,8 +664,8 @@ class TFP_Application {
 			$data ["options"] = array (
 				"display" => $display,
 				"show" => $show,
-				"itemsPerRow" => 3,
-				"colWidth" => 4
+				"itemsPerRow" => 4,
+				"colWidth" => 3
 			);
 
 			# Paginator.
@@ -665,8 +674,8 @@ class TFP_Application {
 				"itemsPerPage" => (int) $show,
 				"currentPage" => (isset ($wp_query->query_vars ['tfp_page'])) ? (int) $wp_query->query_vars['tfp_page'] : 1
 			);
-			$data ["paginator"] ["totalPages"] = ($data ["paginator"] ["itemsPerPage"] > 0) ? (int) ceil ($data ["paginator"] ["totalItems"] / $data ["paginator"] ["itemsPerPage"]) : 0;
-			$data ["paginator"] ["startItem"] = ($data ["paginator"] ["currentPage"] - 1) * $data ["paginator"] ["itemsPerPage"] + 1;
+			$data ["paginator"]["totalPages"] = ($data ["paginator"]["itemsPerPage"] > 0) ? (int) ceil ($data ["paginator"]["totalItems"] / $data ["paginator"]["itemsPerPage"]) : 0;
+			$data ["paginator"]["startItem"] = ($data ["paginator"]["currentPage"] - 1) * $data ["paginator"]["itemsPerPage"] + 1;
 
 			# Map key.
 			$data["map"] = get_option ("tfp_microsoft_bing_map_app_key");

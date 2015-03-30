@@ -1,0 +1,13 @@
+<div data-bbi-action="ConfirmationSocialSharing"
+	data-bbi-app="OnlineExpressForms"
+	data-active="<?php echo $data["active"]; ?>"
+	data-share-this-publisher-id="<?php echo $data["shareThisPublisherId"]; ?>"
+	data-button-label="<?php echo $data["buttonLabel"]; ?>"
+	data-button-icon="<?php echo $data["buttonIcon"]; ?>"
+	data-introduction-title="<?php echo $data["introductionTitle"]; ?>"
+	data-introduction-body="<?php echo $data["introductionBody"]; ?>"
+	data-share-title="<?php echo $data["shareTitle"]; ?>"
+	data-share-summary="<?php echo $data["shareSummary"]; ?>"
+	data-share-url="<?php echo $data["shareUrl"]; ?>"
+	data-share-image="<?php echo $data["shareImage"]; ?>"
+	data-activate-on-load="<?php echo $data["activateOnLoad"]; ?>"></div>

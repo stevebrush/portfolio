@@ -1,6 +1,5 @@
 <?php
-if (class_exists ("PostMetaBox")) exit ();
-class PostMetaBox extends BB_PluginHelper {
+class PostMetaBox extends WP_BlackbaudPlugin {
 
 	public $slug;
 	public $postType;
@@ -20,61 +19,68 @@ class PostMetaBox extends BB_PluginHelper {
 		"priority" => "default"
 	);
 
-	public function __construct (Array $options = array (), BlackbaudCPT $factory) {
+	public function __construct (Array $options = array (), WP_BlackbaudFactory $factory) {
 
-		$this->settings = array_merge ($this->defaults, $options);
-		$this->factory = $factory;
+		$this-> settings = array_merge ($this-> defaults, $options);
+		$this-> factory = $factory;
 
-		$this->CheckAdmin ();
-		$this->SetProperties ();
+		$this-> CheckAdmin ();
+		$this-> SetProperties ();
 
-		$this->slug .= "_metabox";
-		$this->nonceLabel = $this->postType . "_" . $this->slug . "_nonce";
-		$this->nonceActionLabel = $this->postType . "_" . $this->slug;
+		$this-> slug .= "_metabox";
+		$this-> nonceLabel = $this-> postType . "_" . $this-> slug . "_nonce";
+		$this-> nonceActionLabel = $this-> postType . "_" . $this-> slug;
 
-		if (! isset ($this->templateFile)) {
-			$this->templateFile = $this->factory->Config ("dir", "view") . "meta-box.php";
+		if (! isset ($this-> templateFile)) {
+			$this-> templateFile = $this-> factory-> Config ("dir", "view") . "meta-box.php";
 		}
 	}
 
 	public function AddField (Array $args = array ()) {
-		$this->fieldArgs [] = $args;
+		$this-> fieldArgs [] = $args;
 		return $this;
 	}
 
 	public function Build () {
-		if (function_exists ("add_action") && $this->isAdmin) {
-			add_action ("add_meta_boxes_" . $this->postType, array ($this, "Create"));
-			add_action ("save_post_" . $this->postType, array ($this, "Save"));
+		if (function_exists ("add_action") && $this-> isAdmin) {
+			add_action ("add_meta_boxes_" . $this-> postType, array ($this, "Create"));
+			add_action ("save_post_" . $this-> postType, array ($this, "Save"));
 		}
 	}
 
 	public function Create () {
-		add_meta_box ($this->postType . "_" . $this->slug, __ ($this->label, $this->postType), array ($this, "Display"), $this->postType, $this->context, $this->priority);
+		add_meta_box ($this-> postType . "_" . $this-> slug, __ ($this-> label, $this-> postType), array ($this, "Display"), $this-> postType, $this-> context, $this-> priority);
 	}
 
 	public function Display (WP_POST $post) {
 
 		$data = array ();
 		$fieldsHTML = array ();
+		$nonceField = wp_nonce_field ($this-> nonceActionLabel, $this-> nonceLabel, true, false);
 
 		# Make sure our form gets a security signature.
 		if (function_exists ("wp_nonce_field")) {
-			$fieldsHTML [] = array(
+			$fieldsHTML [] = array (
+				"containerStart" => '',
 				"label" => "",
-				"input" => wp_nonce_field ($this->nonceActionLabel, $this->nonceLabel, true, false)
+				"input" => $nonceField,
+				"containerStop" => '',
+				"html" => $nonceField
 			);
 		}
 
 		# Print the appropriate fields.
-		if (count ($this->fieldArgs)) {
-			foreach ($this->fieldArgs as $thisField) {
+		if (count ($this-> fieldArgs)) {
+			foreach ($this-> fieldArgs as $thisField) {
 				$field = new PostMetaField ($post, $thisField);
-				$fieldsHTML [] = array(
-					"label" => $field->Render ("label", false),
-					"input" => $field->Render ("input", false)
+				$fieldsHTML [] = array (
+					"containerStart" => $field-> Render ("containerStart", false),
+					"label" => $field-> Render ("label", false),
+					"input" => $field-> Render ("input", false),
+					"containerStop" => $field-> Render ("containerStop", false),
+					"html" => $field-> Render ("all", false)
 				);
-				$this->fields [] = $field;
+				$this-> fields [] = $field;
 			}
 		}
 
@@ -82,7 +88,7 @@ class PostMetaBox extends BB_PluginHelper {
 			"fields" => $fieldsHTML
 		);
 
-		echo $this->View ($data);
+		echo $this-> View ($data);
 	}
 
 	public function Save ($postId) {
@@ -91,14 +97,14 @@ class PostMetaBox extends BB_PluginHelper {
 		$post = get_post ($postId);
 
 		# Check if our nonce is set.
-		if (! isset ($response [$this->nonceLabel])) {
+		if (! isset ($response [$this-> nonceLabel])) {
 			return $postId;
 		}
 
-		$nonce = $response [$this->nonceLabel];
+		$nonce = $response [$this-> nonceLabel];
 
 		# Verify that the nonce action is valid.
-		if (function_exists ("wp_verify_nonce") && ! wp_verify_nonce ($nonce, $this->nonceActionLabel)) {
+		if (function_exists ("wp_verify_nonce") && ! wp_verify_nonce ($nonce, $this-> nonceActionLabel)) {
 			return $postId;
 		}
 
@@ -125,17 +131,23 @@ class PostMetaBox extends BB_PluginHelper {
 		# We've made it this far, let's save the post meta!
 
 		# Get the field objects.
-		if (count ($this->fieldArgs)) {
-			foreach ($this->fieldArgs as $thisField) {
-				$this->fields [] = new PostMetaField ($post, $thisField);
+		if (count ($this-> fieldArgs)) {
+			foreach ($this-> fieldArgs as $thisField) {
+				$this-> fields [] = new PostMetaField ($post, $thisField);
 			}
 		}
 
 		# Sanitize the user input.
-		if (count ($this->fields)) {
-			foreach ($this->fields as $field) {
-				if (isset ($response [$field->name])) {
-					update_post_meta ($postId, $field->name, $response [$field->name]);
+		if (count ($this-> fields)) {
+			foreach ($this-> fields as $field) {
+				if (isset ($response [$field-> name])) {
+					if ($response [$field-> name] === "on") {
+						update_post_meta ($postId, $field-> name, "true");
+					} else {
+						update_post_meta ($postId, $field-> name, $response [$field-> name]);
+					}
+				} else {
+					update_post_meta ($postId, $field-> name, "false");
 				}
 			}
 		}
@@ -143,7 +155,7 @@ class PostMetaBox extends BB_PluginHelper {
 
 	private function View ($data = array ()) {
 
-		$file = $this->templateFile;
+		$file = $this-> templateFile;
 
 		if (! file_exists ($file)) {
 			return "";
@@ -154,4 +166,5 @@ class PostMetaBox extends BB_PluginHelper {
 		return ob_get_clean ();
 
 	}
+
 }

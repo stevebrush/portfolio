@@ -3,6 +3,11 @@ using System.Collections;
 
 public class UserInputHandler : MonoBehaviour {
 
+	/*
+	 * Sends out anonymous triggers.
+	 * 
+	 */
+
 	private Camera mainCamera;
 	private Vector2 startPosition;
 
@@ -33,7 +38,7 @@ public class UserInputHandler : MonoBehaviour {
 	void Start () {
 		mainCamera = Camera.main;
 	}
-
+	
 	// Update is called once per frame
 	void Update () {
 
@@ -100,7 +105,7 @@ public class UserInputHandler : MonoBehaviour {
 				if (swipeGestureRecognized) {
 
 					// Get the sum of the start and end points.
-					swipeSum = touch.position - startPosition;
+					swipeSum = touch.position - startPosition; 
 
 					// Determine swipe's direction.
 					if (Mathf.Abs(swipeSum.x) > Mathf.Abs(swipeSum.y)) {

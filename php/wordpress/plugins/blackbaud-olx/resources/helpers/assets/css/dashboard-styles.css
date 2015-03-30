@@ -38,3 +38,12 @@ label.control-label {
 .form-group {
 	margin-bottom: 15px;
 }
+
+textarea.accepts-code {
+	min-height: 100px;
+	font-family: "Consolas", "Monaco", "Menlo", "Courier New";
+	background: #f7f7f7;
+	color: #555;
+	font-size: 12px;
+	white-space: nowrap;
+}

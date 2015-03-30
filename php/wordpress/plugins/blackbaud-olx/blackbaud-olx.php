@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Blackbaud Online Express: Forms
-Description: An easier way to embed OLX forms on your WordPress site.
+Plugin Name: Blackbaud: Online Express Forms
+Description: An easier way to embed Online Express forms on your WordPress site.
 Author: Blackbaud Interactive Services
-Version: 0.1
+Version: 1.0
 Text Domain: olx_forms
 */
 
@@ -23,4 +23,4 @@ include "resources/class/BlackbaudOnlineExpress.php";
 define ("OLXFORMS_PLUGIN_MAIN_FILE", __FILE__);
 
 # Run with it!
-BlackbaudOnlineExpress:: Start ();
+$BlackbaudOnlineExpress = new BlackbaudOnlineExpress (new WP_BlackbaudFactory ($helpers_config));

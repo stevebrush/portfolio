@@ -37,7 +37,7 @@ $paginator = $data["paginator"];
 							<div class="thumbnail-group-item">
 								<p class="thumbnail">
 									<a href="<?php echo add_query_arg(array("tfp_id" => $paper["paperId"])); ?>">
-										<img src="<?php echo $paper["images"]["sm"]; ?>">
+										<img src="<?php echo $paper["images"]["md"]; ?>">
 									</a>
 								</p>
 								<h4 class="thumbnail-group-title">

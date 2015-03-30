@@ -1,9 +1,4 @@
 <?php
-/*
-ini_set('display_errors',1);
-ini_set('display_startup_errors',1);
-error_reporting(-1);
-*/
 date_default_timezone_set('America/New_York');
 
 define("DS", 				  DIRECTORY_SEPARATOR);
@@ -15,16 +10,6 @@ define("TFP_CLASS_PATH", 	  TFP_SITE_ROOT . "resources" . DS . "class" . DS);
 define("TFP_VENDOR_PATH", 	  TFP_SITE_ROOT . "resources" . DS . "vendor" . DS);
 
 $tfp_config = array();
-
-/*
-$tfp_config["feed"] = array(
-	"archive-date" 		=> "http://www1.newseum.org/TFPAPI/JSON/GetArchive",
-	"archive-summary" 	=> "http://www1.newseum.org/TFPAPI/JSON/GetArchiveSummary",
-	"daily-papers" 		=> "http://www1.newseum.org/TFPAPI/JSON/GetPapersFP",
-	"daily-status" 		=> "http://www1.newseum.org/TFPAPI/JSON/GetStatusFP",
-	"top-ten" 			=> "http://www1.newseum.org/TFPAPI/JSON/GetTop10FP"
-);
-*/
 
 $tfp_config["feed"] = array(
 	"archive-date" 		=> get_option("tfp_archive_date"),
@@ -43,12 +28,6 @@ $tfp_config["url"] = array(
 	"js" => TFP_WEB_ROOT . "assets/js/",
 	"default-preview-thumbnail" => TFP_WEB_ROOT . "assets/img/default-thumbnail.jpg"
 );
-
-/*
-$tfp_config["bing"] = array(
-	"key" => "AhqxplkQBqlfHX38_g7PQFoXG4u41rtg-vbEK92-FL9e7YrEevEE3QJ6jWDSGcoq"
-);
-*/
 
 $tfp_config["map"] = array(
 	"key" => get_option("tfp_microsoft_bing_map_app_key")

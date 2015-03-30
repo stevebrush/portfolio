@@ -6,7 +6,7 @@ public class RoomBuilder : MonoBehaviour {
 
 	public GameObject room;
 	private GameObject[] rooms;
-
+	
 	public int currentRoomIndex = 0;
 	public int numRoomsMin = 25;
 	public int numRoomsMax = 30;
@@ -23,7 +23,7 @@ public class RoomBuilder : MonoBehaviour {
 	private int placementBottom = 0;
 
 	public GameObject[] BuildRooms() {
-
+		
 		/*
 		 * 1. Create a random number of rooms.
 		 * 2. For each one created, attempt to find a placement on the map arrays next to an available room.
@@ -33,6 +33,13 @@ public class RoomBuilder : MonoBehaviour {
 		 * 6. Assign an entrance.
 		 * 7. Assign an exit.
 		 */
+
+		//int placementStartRow = (placementStart > rowWidth) ? Mathf.FloorToInt (placementStart / rowWidth) : 1;
+		//int placementStartCol = (placementStart > rowWidth) ? placementStart - (placementStartRow * rowWidth) : placementStart;
+		//int roomToLock = Random.Range (1, numTotalRooms);
+		//if (i == roomToLock) {
+			//roomController.locked = true;
+		//}
 
 		RoomController roomController;
 
@@ -89,30 +96,35 @@ public class RoomBuilder : MonoBehaviour {
 			LinkRoomAdjacents(roomController);
 		}
 
+		// Create an entrance.
+
+
+		// Create an exit.
+		
 		PositionRooms ();
 		return rooms;
 	}
 
 	private void AddToMap(RoomController roomController, int i) {
-
+		
 		int randomRoomIndex = Random.Range (0, numTotalRooms - 1);
 		int counter = 0; // fail safe.
-
+		
 		bool findNewRandomRoom = true;
 
 		List<int> possibleDoorIndexes = new List<int>();
 		RoomController randomRoomController = GetComponent<RoomController> ();
-
+		
 		// Find a room that has an open placement next to it.
 		while (findNewRandomRoom && counter < 1000) {
-
+			
 			counter++;
 			randomRoomIndex = Random.Range (0, placedRooms.Count);
 
 			// Random room cannot be the current room.
 			if (randomRoomIndex == i) {
 				findNewRandomRoom = true;
-
+				
 			} else {
 
 				randomRoomController = placedRooms[randomRoomIndex].GetComponent<RoomController> ();
@@ -152,7 +164,7 @@ public class RoomBuilder : MonoBehaviour {
 		}
 
 		if (finalIndexes.Count == 0) {
-			return;
+			return;	
 		}
 
 		int randomDoorIndex = Random.Range (0, finalIndexes.Count - 1);
@@ -193,6 +205,8 @@ public class RoomBuilder : MonoBehaviour {
 			break;
 		}
 
+		//Debug.Log ("ADDING A DOOR: From " + roomController.storageIndex + " to " + adjacentRoomController.storageIndex);
+
 		roomController.numDoors++;
 		adjacentRoomController.numDoors++;
 	}
@@ -218,10 +232,10 @@ public class RoomBuilder : MonoBehaviour {
 	private List<int> FindValidDoorsFor (int placementIndex, bool isVacant = true) {
 
 		List<int> possibleDoorIndexes = new List<int>();
-
+		
 		// Store the array indexes of the possible room locations.
 		UpdatePlacementIndexes (placementIndex);
-
+		
 		// Make sure the new placement isn't out of bounds.
 		bool leftNull = ((placementIndex > 0 && placementIndex % rowWidth == 0) || placementLeft < 0); // if there are no remainders on the current room, we're at the start of the array; or, the start of the array.
 		bool rightNull = ((placementRight) % rowWidth == 0 || placementRight > numTotalPlacements); // there are no remainders, so it's the start of a new row; or, the end of the array.
@@ -255,7 +269,7 @@ public class RoomBuilder : MonoBehaviour {
 
 		int randomIndex = Random.Range (0, possibleDoorIndexes.Count);
 		int randomDoorIndex = possibleDoorIndexes[randomIndex];
-
+		
 		// Assign both rooms the appropriate door indexes.
 		switch (randomDoorIndex) {
 		case Config.UP:
@@ -283,7 +297,7 @@ public class RoomBuilder : MonoBehaviour {
 			randomRoom.doorIndex[Config.LEFT] = targetRoom.storageIndex;
 			break;
 		}
-
+		
 		// Update the number of rooms so we can elect an appropriate sprite.
 		targetRoom.numDoors++;
 		randomRoom.numDoors++;
@@ -299,7 +313,7 @@ public class RoomBuilder : MonoBehaviour {
 			roomController.SetSpriteMap();
 		}
 	}
-
+	
 	private Vector2 PositionFromPlacement(int placement) {
 		int x; // 0-6
 		int y; // 0-6

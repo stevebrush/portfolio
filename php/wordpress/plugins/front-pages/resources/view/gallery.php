@@ -53,7 +53,7 @@ $paginator = $data["paginator"];
 						<?php
 
 						// End row
-						if (($counter === (($paginator["startItem"]) + (($colCounter * $data["options"]["itemsPerRow"]) - 1))) || $counter == $paginator["itemsPerPage"]) {
+						if (($counter === (($paginator["startItem"]) + (($colCounter * $data["options"]["itemsPerRow"]) - 1))) || ($counter == $paginator["itemsPerPage"]) || $counter == $paginator ["totalItems"]) {
 							echo '</div>';
 							$colCounter++;
 						}

@@ -8,7 +8,7 @@ $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 <div class="tfp-utility">
 	<div class="tfp-navigation">
 		<ul class="nav nav-pills">
-			<li><a href="<?php echo add_query_arg (array ("tfp_display" => "gallery"), get_permalink ()); ?>"><span class="fa fa-newspaper-o"></span>Today's Front Pages</a></li>
+			<li><a href="<?php echo add_query_arg (array ("tfp_display" => "gallery"), get_permalink ()); ?>"><span class="fa fa-newspaper-o"></span>Today's Pages</a></li>
 		</ul>
 		<ul class="nav nav-pills">
 			<li<?php echo ($data["options"]["display"] === "archive-date" || $data["options"]["display"] === "archive-summary") ? ' class="active"': ""; ?>><a href="<?php echo add_query_arg(array("tfp_display" => "archive-summary"), get_permalink()); ?>"><span class="fa fa-archive"></span>Archives</a></li>

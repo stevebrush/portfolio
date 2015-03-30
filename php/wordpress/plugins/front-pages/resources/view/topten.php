@@ -17,7 +17,7 @@
 						<div class="col-md-3 col-sm-4">
 							<div class="thumbnail-group-item">
 								<p class="thumbnail">
-									<a href="<?php echo add_query_arg(array("tfp_id" => $paper["paperId"])); ?>">
+									<a href="<?php echo add_query_arg(array("tfp_id" => $paper["paperId"])); ?>" name="<?php echo $paper["paperId"]; ?>">
 										<img src="<?php echo $paper["images"]["sm"]; ?>">
 									</a>
 								</p>
@@ -37,7 +37,12 @@
 		</div>
 	</div>
 	<div class="tfp-rss-link">
-		<h4>RSS:</h4>
-		<a href="http://www.newseum.org/todaysfrontpages/?tfp_display=toptenrss" target="_blank"><span class="fa fa-rss"></span>http://www.newseum.org/todaysfrontpages/?tfp_display=toptenrss</a>
+		<table class="arrowLink">
+		<tbody>
+		<tr>
+		<td><a title="Top Ten RSS" href="http://www1.newseum.org/TFPAPI/Cache/TopTen.xml">Top Ten RSS</a></td>
+		</tr>
+		</tbody>
+		</table>
 	</div>
 </div>
