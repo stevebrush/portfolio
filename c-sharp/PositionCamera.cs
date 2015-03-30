@@ -2,8 +2,7 @@
 using System.Collections;
 
 public class PositionCamera : MonoBehaviour {
-
-	//private float[] easings = {15f, 15f, 15f};
+	
 	private float[] easings = {5f, 10f, 15f};
 
 	private Transform _t;

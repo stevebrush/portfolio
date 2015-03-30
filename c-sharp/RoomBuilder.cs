@@ -34,13 +34,6 @@ public class RoomBuilder : MonoBehaviour {
 		 * 7. Assign an exit.
 		 */
 
-		//int placementStartRow = (placementStart > rowWidth) ? Mathf.FloorToInt (placementStart / rowWidth) : 1;
-		//int placementStartCol = (placementStart > rowWidth) ? placementStart - (placementStartRow * rowWidth) : placementStart;
-		//int roomToLock = Random.Range (1, numTotalRooms);
-		//if (i == roomToLock) {
-			//roomController.locked = true;
-		//}
-
 		RoomController roomController;
 
 		int i;
@@ -95,11 +88,6 @@ public class RoomBuilder : MonoBehaviour {
 			}
 			LinkRoomAdjacents(roomController);
 		}
-
-		// Create an entrance.
-
-
-		// Create an exit.
 		
 		PositionRooms ();
 		return rooms;
@@ -157,7 +145,6 @@ public class RoomBuilder : MonoBehaviour {
 
 		// Let's make sure that the valid door indexes aren't already assigned.
 		for (int i = 0; i < validDoorIndexes.Count; i++) {
-			//Debug.Log ("(" + roomController.storageIndex + ") Storage Index: " + doorIndexes[validDoorIndexes[i]] + " / Door Index: " + validDoorIndexes[i]);
 			if (doorIndexes[validDoorIndexes[i]] == -1) {
 				finalIndexes.Add (validDoorIndexes[i]);
 			}
@@ -169,7 +156,7 @@ public class RoomBuilder : MonoBehaviour {
 
 		int randomDoorIndex = Random.Range (0, finalIndexes.Count - 1);
 		int randomDoorDirection = finalIndexes [randomDoorIndex];
-		//Debug.Log ("Random direction: " + randomDoorDirection);
+
 		switch (randomDoorDirection) {
 		case Config.UP:
 			adjacentRoomController = GetRoomControllerFromPlacement (placementTop);
@@ -204,8 +191,6 @@ public class RoomBuilder : MonoBehaviour {
 			adjacentRoomController.doorIndex[right] = roomController.storageIndex;
 			break;
 		}
-
-		//Debug.Log ("ADDING A DOOR: From " + roomController.storageIndex + " to " + adjacentRoomController.storageIndex);
 
 		roomController.numDoors++;
 		adjacentRoomController.numDoors++;

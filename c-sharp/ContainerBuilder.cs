@@ -33,42 +33,12 @@ public class ContainerBuilder : MonoBehaviour {
 
 		for (; i < numRooms; i++) {
 
-
-
 			room = rooms[i];
-
-			/*
-			Vector2 position = room.transform.position;
-			Vector2 size = GetComponent<SpriteRenderer> ().bounds.size;
-			float half = size.x / 2;
-			float minX = position.x - half;
-			float maxX = position.x + half;
-			int randomX = Random.Range (minX, maxX);
-			int randomY = 0.0f;
-
-			Debug.Log (room.GetComponent<RoomController>().storageIndex + ", " + randomX);
-			*/
-
-
-
 
 			sprite = room.GetComponent<SpriteRenderer> ().sprite;
 			rect = sprite.textureRect;
 			roomWidth = (int) rect.width;
 			roomHalf = Mathf.FloorToInt (roomWidth / 2);
-
-
-			//Debug.Log (sprite.bounds.);
-
-			//Debug.Log (Random.Range (textureBounds.x, textureBounds.xMax));
-			//
-			//Debug.Log (room.transform.position);
-			//Vector2 point = Rect.PointToNormalized(rect, new Vector2(randomX, randomY));
-			//Debug.Log (textureBounds.position + ", " + point);
-			//Debug.Log ("New x: " + (textureBounds.position.x + point.x));
-			//Debug.Log ("New y: " + (textureBounds.position.y + point.y));
-
-
 
 			// Reset the room's container list.
 			roomContainers.Clear ();

@@ -16,8 +16,6 @@ public class FadeInOut : MonoBehaviour {
 
 	void Awake() {
 		color = renderer.material.color;
-		//color.a = 0.0f; // Hide by default
-		//renderer.material.color = color;
 	}
 
 	public void Hide() {
@@ -144,7 +142,6 @@ public class FadeInOut : MonoBehaviour {
 			yield return new WaitForSeconds(waitTime);
 		}
 		renderer.material.color = originalColor;
-		//FadeOut ();
 		isRunning = false;
 	}
 	

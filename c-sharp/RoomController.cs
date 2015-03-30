@@ -32,7 +32,6 @@ public class RoomController : MonoBehaviour {
 	private int numContainersReady = 0;
 
 	void Start() {
-		//Debug.Log ("RoomController Start();");
 		fadeInOut = gameObject.GetComponent<FadeInOut> ();
 		fadeInOut.Hide ();
 		Subscribe ();
@@ -50,7 +49,6 @@ public class RoomController : MonoBehaviour {
 
 		// If there are containers in this room, subscribe to the first one's ready event.
 		if (numContainers > 0) {
-			//Debug.Log ("There are many containers!");
 			for (int i = 0; i < numContainers; i++) {
 				containerController = containers [i].GetComponent<ContainerController> ();
 				containerController.OnContainerReady += CheckContainersReady;
@@ -59,7 +57,6 @@ public class RoomController : MonoBehaviour {
 		
 		// No containers exist, so no need to check their ready states.
 		else {
-			//Debug.Log ("There are no containers!");
 			containersReady = true;
 		}
 	}
@@ -71,8 +68,6 @@ public class RoomController : MonoBehaviour {
 			return;
 		}
 
-		//Debug.Log ("RoomController: CheckEnter()...");
-
 		if (visited) {
 			fadeInOut.FadeIn ("fast");
 		} else {
@@ -81,18 +76,13 @@ public class RoomController : MonoBehaviour {
 
 		if (OnEnter != null) {
 			OnEnter ();
-		} else {
-			//Debug.Log ("RoomController: Nothing assigned...");	
 		}
 	}
 
 	private void CheckExit() {
 
-		//Debug.Log ("CheckExit(): Checking... " + selected);
-
 		// Only check enter if the room is the current room.
 		if (!selected) {
-			//Debug.Log ("CheckExit(): We're not in the current room, cancelling.");
 			return;
 		}
 
@@ -108,11 +98,8 @@ public class RoomController : MonoBehaviour {
 	}
 
 	private void CheckContainersReady() {
-		//numContainersReady++;
-		//if (numContainersReady >= numContainers) {
-			containersReady = true;
-			CheckReady ();
-		//}
+		containersReady = true;
+		CheckReady ();
 	}
 
 	private void CheckRoomReady() {
@@ -126,8 +113,6 @@ public class RoomController : MonoBehaviour {
 			return;
 		}
 
-		//Debug.Log ("Room CheckReady(): " + roomReady + " || " + containersReady);
-
 		// Both the room and the containers need to be ready!
 		if (!selected || !roomReady || !containersReady) {
 			return;	
@@ -136,14 +121,10 @@ public class RoomController : MonoBehaviour {
 		roomReady = false;
 		if (numContainers > 0) {
 			containersReady = false;
-			//numContainersReady = 0;
 		}
 
 		if (OnReady != null && selected == true) {
-			//Debug.Log ("Checking ready...");
 			OnReady ();
-		} else {
-			//Debug.Log ("There are no subscriptions for OnRoomReady();");	
 		}
 	}
 

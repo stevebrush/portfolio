@@ -53,10 +53,6 @@ public class Foreman : MonoBehaviour {
 		// Set the camera.
 		cameraScript = mainCamera.GetComponent<PositionCamera> ();
 		
-		// Build the quadrants.
-		//QuadrantBuilder quadrantBuilderScript = GetComponent<QuadrantBuilder> ();
-		//quadrants = quadrantBuilderScript.BuildQuadrants ();
-		
 		// Build the rooms.
 		RoomBuilder floorBuilderScript = GetComponent<RoomBuilder> ();
 		rooms = floorBuilderScript.BuildRooms();
@@ -213,17 +209,12 @@ public class Foreman : MonoBehaviour {
 	}
 
 	private void Subscribe() {
-		//Debug.Log ("Foreman subscribe...");
-		//UserInputHandler.OnTap += SearchWithTap;
-		//UserInputHandler.OnSwipeEnded += MoveMap;
 		UserInputHandler.OnDirectionalKeyPressed += MoveMap;
 		UserInputHandler.OnMouseClicked += SearchMap;
 		PositionCamera.OnCameraReady += UpdateMap;
 	}
 	
 	private void Unsubscribe() {
-		//UserInputHandler.OnTap -= SearchWithTap;
-		//UserInputHandler.OnSwipeEnded -= MoveMap;
 		UserInputHandler.OnDirectionalKeyPressed -= MoveMap;
 		UserInputHandler.OnMouseClicked -= SearchMap;
 		PositionCamera.OnCameraReady -= UpdateMap;

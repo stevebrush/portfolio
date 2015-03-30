@@ -33,7 +33,6 @@ public class ContainerController : MonoBehaviour {
 
 		// Presets.
 		sprite.sortingOrder = 1;
-		//sectorTransform = sector.transform;
 		inactiveLayer = LayerMask.NameToLayer ("Default");
 		activeLayer = LayerMask.NameToLayer ("ActiveItems");
 
@@ -55,9 +54,7 @@ public class ContainerController : MonoBehaviour {
 		gameObject.layer = inactiveLayer;
 	}
 
-	private void PositionContainer () {
-		//transform.position = sectorTransform.position;
-	}
+	private void PositionContainer () {}
 
 	private void CheckReady () {
 		if (OnContainerReady != null) {
