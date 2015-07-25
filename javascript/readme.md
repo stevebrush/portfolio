@@ -1,5 +1,4 @@
 <h1>JavaScript</h1>
-<p>The JavaScript language is my "heart language".</p>
 <h4>BBI Namespace</h4>
 <p>This project is currently supported by my employer, Blackbaud. It was built to give our JavaScript developers a consistent framework to develop all of our cross-platform customizations.</p>
 <p>It features a module-focused structure, an asset-loader, and easily integrates with other frameworks such as AngularJS.</p>
