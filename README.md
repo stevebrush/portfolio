@@ -30,3 +30,5 @@
 	<li>Blackbaud eTapestry API</li>
 	<li>ShelterBuddy API</li>
 </ul>
+<h5>Contact</h5>
+<p><a href="https://www.linkedin.com/profile/view?id=172072783&trk=nav_responsive_tab_profile" target="_blank">LinkedIn</a><br><a href="mailto:stevebrush@aol.com">Email</a></p>
