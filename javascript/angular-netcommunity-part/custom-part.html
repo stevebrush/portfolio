@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="//cdn.jsdelivr.net/bootstrap/3.3.4/css/bootstrap.min.css">
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/lib/css/ng-sortable.min.css">
+<link rel="stylesheet" href="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/lib/css/ng-sortable.style.min.css">
+<link rel="stylesheet" href="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/app/app.css">
+
+<div
+    bbi-app="CommunityBibleStudy"
+    bbi-action="Editor"
+    data-angular-app-src="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/app/app.js"
+    ng-bbnc-editor>
+</div>
+
+<script src="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/lib/js/jquery.js"></script>
+<script src="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/lib/js/angular.js"></script>
+<script src="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/lib/js/ng-sortable.js"></script>
+
+<script>
+    (function(a,p,i,s) {
+     a.getElementById(i)||(s=a.createElement(p),
+     s.id=i,s.src="//api.blackbaud.com/bbi?v=1.1.0",
+     a.getElementsByTagName("head")[0].appendChild(s)
+    )}(document, "script", "bbi-namespace", null));
+</script>
+
+<script bbi-src="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/BBI.CommunityBibleStudy.js"></script>
+
+
+
+
+
+<link rel="stylesheet" href="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/app/app.css">
+<script>
+(function(b,a,n,e){a[e]=function(c){if(a.bbiGetInstance &&
+a.bbiGetInstance.done)b.call({},c);else jQuery(document).on
+(n,function(){b.call({},c)})}})(function(args){
+
+    CommunityBibleStudy.actions.Display.init(args, document.getElementById(args.elementId));
+
+}, window, "bbi-loaded", "bbiDesignationCategoriesInit");
+</script>
+
+<script>
+(function(a,p,i,s) {
+ a.getElementById(i)||(s=a.createElement(p),
+ s.id=i,s.src="//api.blackbaud.com/bbi/?v=1.1.0",
+ a.getElementsByTagName("head")[0].appendChild(s)
+)}(document, "script", "bbi-namespace", null));
+</script>
+
+<script data-bbi-src="//dl.dropboxusercontent.com/u/1345573/clients/community-bible-study/BBI.CommunityBibleStudy.js"></script>
