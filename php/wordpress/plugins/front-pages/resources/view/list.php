@@ -33,7 +33,7 @@
 								<h4><?php echo $title; ?></h4>
 								<h6><?php echo $paper ["location"]; ?></h6>
 								<div class="thumbnail">
-									<img src="<?php echo $paper ["images"]["md"]; ?>" alt="">
+									<i data-src="<?php echo $paper ["images"]["md"]; ?>"></i>
 								</div>
 							</div>
 						</a> <small><?php echo $paper ["location"]; ?></small>

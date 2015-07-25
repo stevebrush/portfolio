@@ -1,5 +1,5 @@
 .tfp-utility .nav > li > a {
-	padding: 4px 8px;
+	padding: 4px 6px; /*8px*/
 	text-transform: uppercase;
 }
 .tfp-utility {
@@ -179,6 +179,7 @@
 	bottom: 18px;
 	left: 50px;
 	box-shadow: 0 0 4px rgba(0,0,0,0.5);
+	z-index: 9999;
 }
 	.tfp-list-popup h4 {
 		white-space: nowrap;

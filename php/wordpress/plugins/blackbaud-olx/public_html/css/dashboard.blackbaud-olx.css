@@ -1,0 +1,24 @@
+#adminmenu #menu-posts-olx_forms {}
+	#adminmenu #menu-posts-olx_forms .dashicons-admin-post:before,
+	#adminmenu #menu-posts-olx_forms .dashicons-format-standard:before {
+		display: none;
+	}
+	#adminmenu #menu-posts-olx_forms .wp-menu-image {
+		height: 24px;
+		width: 24px;
+		background-size: 100% 100%;
+		margin-left: 6px;
+		margin-top: 6px;
+		margin-right: 6px;
+	}
+
+#adminmenu .wp-not-current-submenu#menu-posts-olx_forms .wp-menu-image {
+	background-image: url("../img/dashicon-1.png") !important;
+}
+	#adminmenu .wp-not-current-submenu#menu-posts-olx_forms:hover .wp-menu-image {
+		background-image: url("../img/dashicon-2.png") !important;
+	}
+	#adminmenu .wp-has-current-submenu#menu-posts-olx_forms .wp-menu-image,
+	#adminmenu .wp-has-current-submenu#menu-posts-olx_forms .wp-menu-image:hover {
+		background-image: url("../img/dashicon-3.png") !important;
+	}

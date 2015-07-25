@@ -1,4 +1,6 @@
-<?php $paper = $data["paper"]; ?>
+<?php
+$paper = $data["paper"];
+?>
 <div class="tfp-pane tfp-pane-detail">
 	<?php if (isset($data["date"])) : ?>
 		<h4><?php echo $data["date"]; ?></h4>
@@ -8,32 +10,15 @@
 			<ul class="nav nav-pills nav-paper-detail pull-left">
 				<li><a href="<?php echo $paper["links"]["back"]; ?>"><span class="fa fa-arrow-left"></span>Back</a></li>
 				<li><a href="/todaysfrontpages/"><span class="fa fa-th-large"></span>Today's Pages</a></li>
-				<!--<?php/*?>
-				<?php if ($data ["options"] ["display"] === "detail-topten") : ?>
-					<li><a href="<?php echo add_query_arg(array("tfp_display" => "topten"), get_permalink()); ?>"><span class="fa fa-star"></span>Top Ten</a></li>
-				<?php elseif ($data ["options"] ["display"] === "detail-archive-date") : ?>
-					<li><a href="<?php echo add_query_arg(array("tfp_display" => "archive-summary"), get_permalink()); ?>"><span class="fa fa-archive"></span>Archives</a></li>
-				<?php else: ?>
-					<li><a href="<?php echo $paper["links"]["back"]; ?>"><span class="fa fa-th-large"></span>Today's Pages</a></li>
-				<?php endif; ?>
-				<?php*/?>
-				-->
 			</ul>
 			<ul class="nav nav-pills">
-				<li<?php echo ($data["options"]["display"] === "archive-date" || $data["options"]["display"] === "archive-summary") ? ' class="active"': ""; ?>><a href="<?php echo add_query_arg(array("tfp_display" => "archive-summary"), get_permalink()); ?>"><span class="fa fa-archive"></span>Archives</a></li>
-				<?php if (isset($data["showTopTen"]) && $data["showTopTen"] == true) : ?>
-					<li<?php echo ($data["options"]["display"] === "topten") ? ' class="active"': ""; ?>><a href="<?php echo add_query_arg(array("tfp_display" => "topten"), get_permalink()); ?>"><span class="fa fa-star"></span>Top Ten</a></li>
+				<li<?php echo ($data ["options"]["display"] === "archive-date" || $data["options"]["display"] === "archive-summary") ? ' class="active"': ""; ?>><a href="<?php echo add_query_arg(array("tfp_display" => "archive-summary"), get_permalink()); ?>"><span class="fa fa-archive"></span>Archives</a></li>
+				<?php if (isset($data ["showTopTen"]) && $data["showTopTen"] == true) : ?>
+					<li<?php echo ($data ["options"]["display"] === "detail-topten") ? ' class="active"': ""; ?>><a href="<?php echo add_query_arg(array("tfp_display" => "topten"), get_permalink()); ?>"><span class="fa fa-star"></span>Top Ten</a></li>
 				<?php else : ?>
-					<li><a href="#" disabled class="tfp-disabled"><span class="fa fa-star"></span>Top Ten</a></li>
+					<li disabled class="tfp-disabled disabled"><a href="#" disabled class="tfp-disabled disabled"><span class="fa fa-star"></span>Top Ten</a></li>
 				<?php endif; ?>
 			</ul>
-			<!--
-			<ul class="nav nav-pills nav-paper-detail pull-right">
-				<li><a href="#" class="tfp-print"><span class="fa fa-print"></span>Print</a></li>
-				<li><a href="<?php echo $paper["links"]["pdf"]; ?>" target="_blank"><span class="fa fa-file-pdf-o"></span>PDF</a></li>
-				<li><a href="<?php echo $paper["website"]; ?>" target="_blank"><span class="fa fa-external-link"></span>Web Site</a></li>
-			</ul>
-			-->
 		</div>
 	</div>
 	<h2><?php echo $paper["title"]; ?></h2>
@@ -57,7 +42,6 @@
 			<?php endif; ?>
 		</span>
 	</p>
-
 	<p class="tfp-thumbnail">
 		<a href="<?php echo $paper["images"]["lg"]; ?>">
 			<img src="<?php echo $paper["images"]["lg"]; ?>">

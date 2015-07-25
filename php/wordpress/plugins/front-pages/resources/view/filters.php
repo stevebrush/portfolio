@@ -1,3 +1,6 @@
+<?php
+global $wp_query;
+?>
 <form class="tfp-filters">
 	<label>Sort by region:</label>
 	<select id="tfp-sort-region">

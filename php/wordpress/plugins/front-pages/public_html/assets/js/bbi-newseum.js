@@ -6,6 +6,7 @@ window.bbiGetInstance()
 })
 .action("TodaysFrontPages", function (app, bbi, $) {
 
+
 	var _pinId = 0;
 	var _mapItems = [];
 	var _map;
@@ -13,6 +14,7 @@ window.bbiGetInstance()
 		pins: [],
 		infoboxes: []
 	};
+
 
 	var methods = {
 		events: function () {
@@ -36,6 +38,34 @@ window.bbiGetInstance()
 				window.history.back();
 				return false;
 			});
+
+			$('.tfp-list-link').on("hover", function () {
+
+				var $link = $(this);
+
+				// Load the thumbnail.
+				if ($link.find('img').length == 0) {
+					var $i = $link.find("i[data-src]");
+					$i.after($('<img />').attr("src", $i.attr("data-src")));
+				}
+
+				// Auto-set the 'top' attribute based on the window's top.
+				var $popup = $link.find('.tfp-list-popup');
+				var scrollTop = $(window).scrollTop();
+				var elementOffset = $popup.offset().top;
+				var distance = (elementOffset - scrollTop);
+				var bottom = parseInt($popup.css("bottom"), 10);
+
+				if (distance < 0) {
+					$popup.css({
+						"bottom": (distance + bottom - 20) + "px",
+					});
+				} else {
+					$popup.css("bottom", "18px");
+				}
+
+			});
+
 		},
 		map: {
 			load: function (data) {
@@ -101,6 +131,22 @@ window.bbiGetInstance()
 			hideAllLoaders: function () {
 				$(".tfp-loader").hide();
 			}
+		},
+		sharethis: function () {
+			$('span[st_url]').each(function () {
+				$(this).attr('st_url', location.href);
+			});
+			$.ajax({
+				url: '//ws.sharethis.com/button/buttons.js',
+				dataType: 'script',
+				success: function () {
+					stLight.options({
+						publisher: "",
+						onhover: false
+					});
+				},
+				cache: true
+			});
 		}
 	};
 
@@ -212,9 +258,13 @@ window.bbiGetInstance()
 
 				methods.events();
 
-				if (typeof TFP_DATA === "object" && TFP_DATA.options.display === "map") {
-					methods.map.load(TFP_DATA);
+				if (typeof TFP_DATA === "object") {
+					if (TFP_DATA.options.display === "map") {
+						methods.map.load(TFP_DATA);
+					}
 				}
+
+				methods.sharethis();
 
 			});
 

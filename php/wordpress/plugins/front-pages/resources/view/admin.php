@@ -28,6 +28,23 @@
 			<?php endif; ?>
 		</table>
 		<h4 class="tfp-section-heading">
+			RSS Feed Locations (full URLs)
+		</h4>
+		<table class="tfp-settings-table">
+			<?php if (isset($data["rss"])) : ?>
+				<?php foreach ($data["rss"] as $slug => $arr) : ?>
+					<tr>
+						<td class="tfp-form-caption">
+							<label><?php echo $arr["label"]; ?></label>
+						</td>
+						<td class="tfp-form-control">
+							<input class="textbox" type="text" name="<?php echo $slug; ?>" value="<?php echo $arr["value"]; ?>" maxlength="250">
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			<?php endif; ?>
+		</table>
+		<h4 class="tfp-section-heading">
 			Microsoft Bing Maps App Key
 		</h4>
 		<table class="tfp-settings-table">

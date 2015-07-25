@@ -1,0 +1,147 @@
+/* BASIC ELEMENTS */
+input,
+button,
+select,
+textarea {
+	font-family:inherit;
+	font-size:inherit;
+	line-height:inherit;
+}
+ul.bulleted-list {
+    list-style-type: disc;
+    list-style-position: inside;
+}
+ul.numbered-list {
+    list-style-type:armenian;
+    list-style-position: inside;
+}
+
+/* UTILITIES */
+.blackbaud-selectable {
+	cursor:pointer;
+}
+
+/* META BOXES */
+.blackbaud-meta-box {
+	overflow:hidden;
+	padding:1px;
+}
+    .blackbaud-meta-box,
+    .blackbaud-meta-box * {
+    	box-sizing:border-box;
+    	-webkit-box-sizing:border-box;
+    }
+    .blackbaud-meta-box .form-control {
+    	display:block;
+    	width:100%;
+    	height:34px;
+    	padding:6px 12px;
+    	font-size:14px;
+    	line-height:1.42857143;
+    	color:#555;
+    	background-color:#fff;
+    	background-image:none;
+    	border:1px solid #ccc;
+    	border-radius:4px;
+    	-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.075);
+    	box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
+    }
+    .blackbaud-meta-box textarea.form-control {
+    	height:auto;
+    	min-height:150px;
+    }
+    .blackbaud-meta-box label.control-label {
+    	display:inline-block;
+    	max-width:100%;
+    	margin-bottom:5px;
+    	font-weight:700;
+    }
+    .blackbaud-meta-box .form-group {
+    	margin-bottom:15px;
+    	float:left;
+    	width:100%;
+    	clear:both;
+    }
+    .blackbaud-meta-box textarea.accepts-code {
+    	min-height:100px;
+    	font-family:"Consolas","Monaco","Menlo","Courier New";
+    	background:#f7f7f7;
+    	color:#555;
+    	font-size:12px;
+    	white-space:nowrap;
+    }
+    .blackbaud-meta-box .form-label-container {
+    	width:30%;
+    	float:left;
+    	text-align:right;
+    	padding-top:8px;
+    	padding-right:15px;
+    }
+    .blackbaud-meta-box .form-control-container {
+    	width:70%;
+    	float:left;
+    	clear:right;
+    }
+    .blackbaud-meta-box .help-block {
+    	color:#ccc;
+    }
+
+/* SETTINGS PAGE */
+.wrap-blackbaud {
+	padding:10px 20px 0 2px;
+	margin:0;
+}
+    .wrap-blackbaud .dashicons {
+    	font-size:33px;
+    	width:33px;
+    	height:33px;
+    }
+    .wrap-blackbaud .page-header {
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+        margin: 0 0 15px;
+        overflow: hidden;
+    }
+        .wrap-blackbaud .page-header .thumbnail {
+            width: 65px;
+            height: 65px;
+            margin-right: 12px;
+            float: left;
+        }
+            .wrap-blackbaud .page-header .thumbnail > img {
+                width: 100%;
+                height: auto;
+                display: block;
+            }
+    .wrap-blackbaud .page-title {
+        font-size: 36px;
+        margin: 0;
+        padding: 2px 0 0;
+        line-height: 1.1;
+    }
+        .wrap-blackbaud .page-title > small {
+            display: block;
+            font-weight: 700;
+            font-size: 16px;
+            color: #777;
+            padding-top: 5px;
+        }
+    .wrap-blackbaud .panel {
+        background: #fff;
+        box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+        margin-bottom: 15px;
+    }
+        .wrap-blackbaud .panel > .panel-header {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+            .wrap-blackbaud .panel > .panel-header > .panel-title {
+                font-size: 18px;
+                font-weight: 500;
+                margin: 0;
+                padding: 0;
+                line-height: 1.2;
+            }
+        .wrap-blackbaud .panel > .panel-body {
+            padding: 10px 15px;
+        }

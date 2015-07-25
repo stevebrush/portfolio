@@ -1,0 +1,59 @@
+.modal-blackbaud-flyer {}
+    .modal-blackbaud-flyer .modal-content {
+        border-radius: 0;
+    }
+    .modal-blackbaud-flyer .thumbnail {
+        border: 0;
+        padding: 0;
+        border-radius: 0;
+    }
+    .modal-blackbaud-flyer .wysija-input {
+        background-color: #fff;
+        border-radius: 0;
+        box-shadow: none;
+        border: 1px solid #ccc;
+        padding: 4px 10px;
+        height: 50px;
+        font-size: 18px;
+        width:100%;
+        display: block;
+    }
+    .modal-blackbaud-flyer .wysija-submit {
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-weight: 400;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -ms-touch-action: manipulation;
+        touch-action: manipulation;
+        cursor: pointer;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 0;
+        color: #fff;
+        background-color: #337ab7;
+        border-color: #2e6da4;
+        height: 50px;
+        margin-top: 0;
+        text-transform: uppercase;
+        width: 100%;
+        font-size: 18px;
+    }
+    .modal-blackbaud-flyer .modal-subtitle {
+        margin: 0 0 15px;
+    }
+    .modal-blackbaud-flyer .modal-content .formError {
+        border: 0;
+        position: static !important;
+    }
+    .modal-blackbaud-flyer .modal-content .formError .formErrorContent {
+        border: 0;
+        width: 100%;
+    }

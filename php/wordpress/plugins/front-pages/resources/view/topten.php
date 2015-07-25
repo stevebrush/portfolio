@@ -36,13 +36,15 @@
 			<?php endif; ?>
 		</div>
 	</div>
-	<div class="tfp-rss-link">
-		<table class="arrowLink">
-		<tbody>
-		<tr>
-		<td><a title="Top Ten RSS" href="http://www1.newseum.org/TFPAPI/Cache/TopTen.xml">Top Ten RSS</a></td>
-		</tr>
-		</tbody>
-		</table>
-	</div>
+	<?php if (isset($data) && isset($data["rss"])) : ?>
+		<div class="tfp-rss-link">
+			<table class="arrowLink">
+				<tbody>
+					<tr>
+						<td><a title="Top Ten RSS" target="_blank" href="<?php echo $data["rss"]; ?>">Top Ten RSS</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	<?php endif; ?>
 </div>
