@@ -1,0 +1,115 @@
+.inventory {
+
+    .panel-body > & {
+        margin-left: -14px;
+    }
+
+    .inventory-items {
+        padding-left: 24px;
+
+        .inventory-item {
+            cursor: pointer;
+            line-height: 2;
+
+            .fa {
+                margin-right: 8px;
+                margin-left: -23px;
+            }
+        }
+    }
+
+    .inventory-item-cost {
+        text-align: right;
+    }
+}
+
+.panel-inventory {
+    > .panel-heading > .panel-title {
+        left: 20px;
+    }
+    > .panel-body > .scroll-bars > .panel > .panel-heading > .panel-title {
+        left: 20px;
+    }
+}
+
+.quantity-select {
+    width: 100%;
+    background-color: darken($brand-primary, 15%);
+    margin-bottom: 12px;
+    height: 36px;
+    border: 1px solid $body-bg;
+    border-radius: 9px;
+    overflow: hidden;
+
+    > tbody > tr > td {
+        vertical-align:middle;
+    }
+
+    td.quantity-select-total {
+        text-align: center;
+    }
+}
+
+.shopping-total {
+    width: 100%;
+    text-align: center;
+
+    td {
+        vertical-align: middle;
+        font-size: 18px;
+        white-space: nowrap;
+        position: relative;
+        line-height: 1;
+
+        .arrow-up {
+            position: relative;
+            top: -21px;
+        }
+
+        .arrow-down {
+            position: relative;
+            bottom: -18px;
+        }
+
+        small {
+            font-size: 12px;
+            display: block;
+        }
+    }
+
+    &.disabled {
+        opacity: .75;
+    }
+
+    .shopping-total-value {
+        min-width: 100px;
+        display: inline-block;
+    }
+}
+
+.showcase {
+
+    & .buttons {
+        margin-bottom: 10px;
+    }
+
+    .row {
+        margin-left: -10px;
+        margin-right: -10px;
+
+        > [class^="col-"] {
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+}
+
+.has-showcase {
+    > .panel-body {
+        background-color: $brand-primary
+    }
+}
+
+.trader-total.disabled {
+    color: #555;
+}

@@ -1,0 +1,20 @@
+{
+    "Player": {
+        "name": "Blasko",
+        "money": 56,
+        "items": [
+            {
+                "itemId": 1,
+                "quantity": 34
+            },
+            {
+                "itemId": 4,
+                "quantity": 1
+            },
+            {
+                "itemId": 2,
+                "quantity": 6
+            }
+        ]
+    }
+}

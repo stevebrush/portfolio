@@ -1,0 +1,60 @@
+.map-pane {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow:hidden;
+}
+.map-overlay {
+    box-shadow: 0 0 250px rgba(0, 0, 0, 0.9) inset;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 8px;
+}
+.map-contents {
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+.map-image {
+    width: 5000px;
+    height: 3380px;
+
+    img {
+        width: 100%;
+        height: auto;
+        display:block;
+        opacity: .25;
+    }
+}
+.map-pin {
+    position: absolute;
+    z-index: 2;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    padding: 1px 0px 0px 4px;
+
+    .icon {
+        font-size: 35px;
+        line-height: 1;
+    }
+}
+
+.locations-list {
+    > li {
+        margin-bottom: 4px;
+    }
+    .locations-list-explored > .btn {
+        text-align: right;
+    }
+}

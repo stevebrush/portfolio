@@ -1,0 +1,101 @@
+<div class="panel panel-default panel-inventory" ng-class="{'has-showcase': inventory.showcase}">
+    <div class="panel-heading">
+        <h4 class="panel-title">{{inventory.owner.name}}</h4>
+        <span class="panel-info-heading" ng-if="inventory.showMoney"><span class="panel-info-title" ng-class="{blink: inventory.isOverage}">Cogs {{inventory.owner.money}}</span></span>
+    </div>
+    <div class="panel-body">
+        <div class="inventory scroll-bars">
+            <div class="inventory-items" ng-if="!inventory.showcase && !inventory.showQuantitySelect">
+                <div class="row inventory-item" ng-repeat="item in inventory.owner.items track by $index" ng-click="inventory.preview(item)">
+                    <div class="col-xs-10">
+                        <!--
+                        <i ng-if="item.inCart && item.owner === 'npc'" class="fa fa-arrow-up"></i><i ng-if="item.inCart && !item.owner" class="fa fa-arrow-down"></i>{{item.name}}<span ng-if="item.quantity > 1"> ({{item.quantity}})</span>
+                        -->
+                        <i ng-if="item.inCart" class="fa fa-square"></i>{{item.name}}<span ng-if="item.quantity > 1"> ({{item.quantity}})</span>
+                    </div>
+                    <div class="col-xs-2 inventory-item-cost">{{item.value}}</div>
+                </div>
+            </div>
+            <div class="panel panel-default showcase" ng-if="inventory.showcase && !inventory.showQuantitySelect">
+                <div class="panel-heading">
+                    <h5 class="panel-title">{{inventory.showcase.name}}</h5>
+                </div>
+                <div class="panel-body">
+                    <div class="buttons">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button ng-click="inventory.requestQuantity(inventory.showcase)" class="btn btn-primary btn-block" type="button" ng-bind-html="inventory.action.label">{{inventory.action.label}}</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button ng-click="inventory.cancel()" class="btn btn-default btn-block" type="button">Cancel</button>
+                            </div>
+                            <!-- is droppable... -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Value:
+                        </div>
+                        <div class="col-xs-6">
+                             ${{inventory.showcase.value}} ea.
+                        </div>
+                    </div>
+                    <!--
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Retail:
+                        </div>
+                        <div class="col-xs-6">
+                            ${{inventory.showcase.baseValue}}
+                        </div>
+                    </div>
+                    -->
+                    <div class="row">
+                        <div class="col-xs-6">
+                            Weight:
+                        </div>
+                        <div class="col-xs-6">
+                            {{inventory.showcase.baseWeight}} kg
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default" ng-if="inventory.showQuantitySelect">
+                <div class="panel-heading">
+                    <h5 class="panel-title">How many?</h5>
+                </div>
+                <div class="panel-body">
+                    <table class="quantity-select">
+                        <tr>
+                            <td>
+                                <button class="btn btn-primary" ng-click="inventory.decreaseQuantity(inventory.showcase)"><span class="fa fa-arrow-left fa-icon-only"></span></button>
+                            </td>
+                            <td class="quantity-select-total">{{inventory.quantityRequested}}</td>
+                            <td>
+                                <button class="btn btn-primary pull-right" ng-click="inventory.increaseQuantity(inventory.showcase)"><span class="fa fa-arrow-right fa-icon-only"></span></button>
+                            </td>
+                        </tr>
+                    </table>
+                    <div class="buttons">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <button ng-click="inventory.accept(inventory.showcase)" class="btn btn-primary btn-block" type="button">Confirm</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button ng-click="inventory.cancel()" class="btn btn-default btn-block" type="button">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 15px;">
+                        <div class="col-xs-6">
+                            Bundle Value:
+                        </div>
+                        <div class="col-xs-6">
+                            ${{inventory.bundleValue}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="game-pane vessel">
+    <div class="row-4">
+        <st-inventory owner="vessel.player" action="vessel.store"></st-inventory>
+    </div>
+    <div class="row-7">
+        <st-inventory owner="vessel.vessel" action="vessel.take"></st-inventory>
+    </div>
+    <div class="row-1">
+        <div class="buttons">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#/home" class="btn btn-block btn-primary">Take All</a>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-block btn-default" ng-click="vessel.action()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

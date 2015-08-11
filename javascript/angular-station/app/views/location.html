@@ -1,0 +1,101 @@
+<div ng-if="showRoom" class="game-pane">
+    <div class="row-5">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">{{location.name}}</h4>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-8">
+                        <!--
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h5 class="panel-title">Map</h5>
+                            </div>
+                            <div class="panel-body">
+
+                            </div>
+                        </div>
+                        -->
+                    </div>
+                    <div class="col-xs-4">
+                        <!--
+                        <div>Keys: 0</div>
+                        <div>Loot: 100%</div>
+                        -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row-7">
+        <div class="panel panel-default has-room" ng-if="room">
+            <!--div class="panel-heading">
+                <h4 class="panel-title">{{room.name}}</h4>
+                <button type="button" class="btn btn-primary">Scan</button>
+            </div-->
+            <div class="panel-body">
+                <div class="room-wrapper-outer">
+                <div class="room-wrapper-inner">
+                <div class="room-wrapper">
+                    <div class="content">
+                        <table class="room-controls-table">
+                            <tr>
+                                <td class="room-td">
+                                    <div class="room">
+                                        <div class="room-placements">
+                                            <div ng-repeat="placement in room.placements" class="placement-button placement-button-{{placement.position}}">
+                                                <button ng-if="placement.isVessel" class="btn btn-primary" type="button" ng-click="openVessel(placement.roomPlacementId)"><span class="fa fa-icon-only fa-archive"></span></button>
+                                                <button ng-if="placement.isTrader" class="btn btn-primary" type="button" ng-click="openShop(placement.roomPlacementId)"><span class="fa fa-icon-only fa-male"></span></button>
+                                                <button ng-if="placement.isEnemy" class="btn btn-primary" type="button" ng-click="openEnemy(placement.roomPlacementId)"><span class="fa fa-icon-only fa-crosshairs"></span></button>
+                                            </div>
+
+                                            <table class="placement-button placement-button-12"><tbody><tr><td>
+                                                <h4 class="panel-title">{{room.name}}</h4>
+                                                <button class="btn btn-default" type="button" ng-click="">Scan</button>
+                                            </td></tr></tbody></table>
+
+                                        <!--
+                                        <table class="room-table">
+                                            <tbody>
+                                                <tr>
+                                                    <td><button class="btn btn-primary" type="button" ng-click="openVessel(1)"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                    <td><button class="btn btn-primary" type="button"><span class="fa fa-icon-only fa-search"></span></button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        -->
+                                    </div>
+                                    </div>
+                                    <div class="doors">
+                                        <button ng-repeat="door in room.doors" class="btn btn-door btn-door-{{door.cardinalDirection}}" type="button" ng-click="nextRoom(door.nextRoomId)">
+                                            <div class="btn-door-graphic"></div>
+                                            <div class="btn-door-glow"></div>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<st-vessel ng-if="showVessel" room-placement-id="roomPlacementId" action="closeVessel"></st-vessel>
+
+<st-shop ng-if="showShop" room-placement-id="roomPlacementId" action="closeShop"></st-shop>

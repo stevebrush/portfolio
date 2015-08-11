@@ -1,0 +1,59 @@
+<div class="game-pane">
+    <div class="row-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{region.name}}</h3>
+            </div>
+            <div class="panel-body">
+                {{region.description}}
+            </div>
+        </div>
+    </div>
+    <div class="row-7">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Places</h4>
+                <span class="panel-info-heading">
+                    <span class="panel-info-title">
+                        Explored
+                    </span>
+                </span>
+            </div>
+            <div class="panel-body">
+                <ul ng-repeat="location in region.locations" class="nav nav-pills nav-stacked locations-list">
+                    <li class="buttons">
+                        <div class="row">
+                            <div class="col-xs-9">
+                                <a href="#/location/{{location.locationId}}" class="btn btn-primary btn-block">{{location.name}}</a>
+                            </div>
+                            <div class="col-xs-3 locations-list-explored">
+                                <span class="highlight">{{location.explored}}%</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row-1">
+        <div class="buttons">
+            <div class="row">
+                <div class="col-xs-12">
+                    <a class="btn btn-default btn-block" href="#/map">Map</a>
+                </div>
+            </div>
+        </div>
+        <!--
+        <div class="buttons">
+            <div class="row">
+                <div class="col-xs-6">
+                    <a class="btn btn-primary btn-block" href="#">Enter</a>
+                </div>
+                <div class="col-xs-6">
+                    <button type="button" class="btn btn-default btn-block" ng-click="back()">Go back</button>
+                </div>
+            </div>
+        </div>
+        -->
+    </div>
+</div>

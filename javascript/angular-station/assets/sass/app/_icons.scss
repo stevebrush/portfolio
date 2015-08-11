@@ -1,0 +1,22 @@
+.arrow-up {
+	width: 0;
+	height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-bottom: 16px solid $brand-primary;
+}
+
+.arrow-down {
+	width: 0;
+	height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 16px solid $brand-primary;
+}
+
+.fa {
+    margin-right: 10px;
+}
+.fa-icon-only {
+    margin-right: 0;
+}

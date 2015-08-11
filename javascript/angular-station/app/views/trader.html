@@ -1,0 +1,46 @@
+<div class="game-pane shop">
+
+    <!-- PLAYER -->
+    <div class="row-5">
+        <st-inventory ng-if="isReady" owner="player" action="sell" show-money="true" is-overage="totals.difference < 0 && isOverage"></st-inventory>
+    </div>
+
+    <!-- TRADER -->
+    <div class="row-5">
+        <st-inventory ng-if="isReady" owner="trader" action="buy" show-money="true" is-overage="totals.difference > 0 && isOverage"></st-inventory>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="row-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title" ng-if="totals.difference">
+                    {{totals.label}} <span class="trader-total" ng-class="{blink: isOverage}">{{totals.display}}</span>
+                </h4>
+                <span ng-if="totals.difference < 0 && isOverage" class="panel-info-heading">
+                    <span class="panel-info-title">Not enough cogs</span>
+                </span>
+                <!--
+                <span class="panel-info-heading">
+                    <span class="panel-info-title">Sale: {{totals.difference}}</span>
+                </span>
+                -->
+            </div>
+            <div class="panel-body">
+                <div class="buttons">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button ng-if="isDisabled && isOverage" class="btn btn-primary btn-block disabled" disabled type="button">Not Enough</button>
+                            <button ng-if="isDisabled && !isOverage" class="btn btn-primary btn-block disabled" disabled type="button">Continue</button>
+                            <button ng-if="!isDisabled" class="btn btn-primary btn-block" type="button">Continue?</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn btn-default btn-block" type="button" ng-click="back()">Leave</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,45 @@
+/* ROWS */
+@for $i from 1 through 12 {
+    .row-#{$i} {
+        height: percentage($i / 12);
+    }
+}
+
+[class^="row-"] {
+
+    > .row {
+        height: 100%;
+
+        > div {
+            height: 100%;
+        }
+    }
+
+    .panel {
+        height: 100%;
+        margin-bottom: 0;
+
+        > .panel-body {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        > .panel-heading + .panel-body {
+            top: 15px;
+        }
+    }
+
+    .game-pane > & {
+        padding-top: 4px;
+        padding-bottom: 4px;
+        position: relative;
+    }
+
+    .game-pane > &:last-child > * {
+        margin-bottom: 8px;
+    }
+
+}

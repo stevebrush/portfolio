@@ -1,0 +1,27 @@
+{
+  "name": "STATION",
+  "version": "0.0.1",
+  "authors": [
+    "Steve Brush"
+  ],
+  "description": "A game.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "fontawesome": "~4.3.0",
+    "angular": "~1.4.1",
+    "angular-touch": "~1.4.1",
+    "angular-route": "~1.4.1",
+    "lawnchair": "https://github.com/brianleroux/lawnchair.git#~0.6.4"
+  },
+  "resolutions": {
+    "angular": "~1.4.1"
+  }
+}

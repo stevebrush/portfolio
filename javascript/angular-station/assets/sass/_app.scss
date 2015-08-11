@@ -1,0 +1,88 @@
+$brand-primary: #24d175;
+
+@import "_bootstrap";
+
+@font-face {
+    font-family: 'dos';
+    src: url('../fonts/Perfect-DOS-VGA-437-Win.ttf');
+}
+
+@font-face {
+    font-family: 'telegrama';
+    src: url('../fonts/telegrama_render.otf');
+}
+
+@font-face {
+    font-family: 'm-plus';
+    src: url('../fonts/mplus-1m-medium.ttf');
+}
+
+* {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    height: 100%;
+    overflow: hidden;
+}
+/*
+$red: random(256)-1;
+$green: random(256)-1;
+$blue: random(256)-1;
+*/
+.overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 999;
+    &.overlay-bars {
+        background-image: linear-gradient(transparent, rgba(255,255,255,0.05), transparent);
+        background-size: 3px;
+    }
+    &.overlay-color {
+        background-blend-mode: overlay;
+    }
+}
+
+.game-screen {
+    height: 100%;
+    overflow: scroll;
+    padding-top: 15px;
+}
+
+.game-pane {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 4px 8px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.map-panel {}
+
+
+@import "app/rows";
+@import "app/panels";
+@import "app/inventory";
+@import "app/map";
+@import "app/room";
+@import "app/effects";
+@import "app/icons";

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!-- meta that make it a webapp -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <title>STATION</title>
+    <link rel="stylesheet" href="components/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="app/styles/app.min.css">
+
+
+</head>
+<body ng-app="Station">
+
+    <!--div class="overlay overlay-color"></div-->
+    <div class="overlay overlay-bars"></div>
+    <div class="game-screen" ng-view></div>
+
+    <script src="components/lawnchair/src/Lawnchair.js"></script>
+    <script src="components/lawnchair/src/adapters/dom.js"></script>
+    <script src="components/lawnchair/src/adapters/indexed-db.js"></script>
+    <script src="components/lawnchair/src/adapters/webkit-sqlite.js"></script>
+    <script src="components/jquery/dist/jquery.min.js"></script>
+    <script src="components/angular/angular.min.js"></script>
+    <script src="components/angular-touch/angular-touch.min.js"></script>
+    <script src="components/angular-route/angular-route.min.js"></script>
+    <script src="app/scripts/app.min.js"></script>
+
+    <script>
+        //document.ontouchmove = function(event){
+            //event.preventDefault();
+        //}
+        //document.getElementById('overlay').style.backgroundColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+        //var prop = 'rgba(' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ',' + Math.floor(Math.random() * 256) + ', 0.09)';
+        //$('.overlay-color').css({'background-color': prop});
+    </script>
+</body>
+</html>
